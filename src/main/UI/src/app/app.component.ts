@@ -19,6 +19,9 @@ export class AppComponent implements OnInit{
   welcomeMessageEN$! : Observable<string>
   welcomeMessageFR$! : Observable<string>
 
+  //B3b. Creates observables for the time zone conversions for the live presentation announcement
+  presentationMessage$! : Observable<string>
+
   constructor(private httpClient:HttpClient){}
 
   private baseURL:string='http://localhost:8080';
@@ -37,6 +40,9 @@ export class AppComponent implements OnInit{
       //B1b. Code to grab welcome message in English and French
       this.welcomeMessageEN$! = this.httpClient.get(this.baseURL + '/welcome?lang=en-US', {responseType: 'text'} )
       this.welcomeMessageFR$! = this.httpClient.get(this.baseURL + '/welcome?lang=fr-CA', {responseType:'text'})
+
+      //B3b. Code to grab announcement message
+      this.presentationMessage$! = this.httpClient.get(this.baseURL + '/presentation', {responseType:'text'})
 
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),

@@ -22,11 +22,21 @@
 <main id="wrapper">
   <div class="scene" id="welcome">
     <article class="content">
+
+
       <!-- B1b. Code to display English/French on page -->
         <div>
           <h1>{{welcomeMessageEN$ | async}}</h1>
           <h1>{{welcomeMessageFR$ | async}}</h1>
         </div>
+      <br>
+      <!-- B3b. Code to display presentation message -->
+      <div>
+        <h1>{{presentationMessage$ | async}}</h1>
+      </div>
+      <br>
+
+
       <div class="row">
         <div class=""col-12>
           <div class="gallery">
