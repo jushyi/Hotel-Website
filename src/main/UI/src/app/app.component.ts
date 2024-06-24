@@ -58,9 +58,11 @@ export class AppComponent implements OnInit{
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
       this.getAll().subscribe(
 
-        rooms => {console.log(Object.values(rooms)[0]);this.rooms=<Room[]>Object.values(rooms)[0]; }
-
-
+        rooms => {console.log(Object.values(rooms)[0]);this.rooms=<Room[]>Object.values(rooms)[0];
+          //B2. Adding currencies Candaian dollars and Euros. Note says it is not necessary to convert values
+          //Assigning the CAD and EURO prices to be the same as U.S. dollar prices
+          this.rooms.forEach( room => {room.priceCAD = room.price; room.priceEURO = room.price})
+        }
       );
     }
     reserveRoom(value:string){
@@ -107,7 +109,11 @@ export interface Roomsearch{
 export interface Room{
   id:string;
   roomNumber:string;
+  //B2. U.S. dollar already displayed
   price:string;
+  //B2. Adding Canadian Dollar and Euro to display
+  priceCAD:string;
+  priceEURO:string;
   links:string;
 
 }
