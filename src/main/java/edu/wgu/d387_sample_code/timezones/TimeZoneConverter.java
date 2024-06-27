@@ -17,11 +17,12 @@ public class TimeZoneConverter {
 
         //assigning zoneIDs to variables
         ZoneId zEastern = ZoneId.of("America/New_York");
-        ZoneId zPacific = ZoneId.of("America/Los_Angeles");
+        //Change from pacific to mountain time
+        ZoneId zMountain = ZoneId.of("America/Denver");
         ZoneId zUTC = ZoneId.of("UTC");
 
         ZonedDateTime ET = time.withZoneSameInstant(zEastern);
-        ZonedDateTime MT = time.withZoneSameInstant(zPacific);
+        ZonedDateTime MT = time.withZoneSameInstant(zMountain);
         ZonedDateTime UTC = time.withZoneSameInstant(zUTC);
 
         return ET.format(displayFormat) + " ET, "
